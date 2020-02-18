@@ -47,7 +47,18 @@ public class UserRegistrationTest {
     }
     @Test
     public void givenMobileNumber_WhenImproper_ShouldReturnFalse() {
-        boolean mobileNumber = UserRegistration.validateMobileNumber("91 18605863744");
+        boolean mobileNumber = UserRegistration.validateMobileNumber("18605863744");
         Assert.assertFalse(mobileNumber);
+    }
+
+    @Test
+    public void givenEightCharacterLongPassword_WhenProper_ShouldReturnTrue() {
+        boolean passwordAtLeastEightCharacterLong = UserRegistration.validateEightCharacterLongPassword("ubunturoot");
+        Assert.assertTrue(passwordAtLeastEightCharacterLong);
+    }
+    @Test
+    public void givenEightCharacterLongPassword_WhenImProper_ShouldReturnFalse() {
+        boolean passwordAtLeastEightCharacterLong = UserRegistration.validateEightCharacterLongPassword("nturoot");
+        Assert.assertFalse(passwordAtLeastEightCharacterLong);
     }
 }
