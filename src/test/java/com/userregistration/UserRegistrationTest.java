@@ -63,24 +63,34 @@ public class UserRegistrationTest {
     }
 
     @Test
-    public void givenAtLeastOneUpperCaseCharacterPassword_WhenProper_ShouldReturnTrue() {
+    public void givenPasswordHasAtLeastOneUpperCaseLetter_WhenProper_ShouldReturnTrue() {
         boolean passwordAtLeastOneUpperCaseCharacter = UserRegistration.validatePassword("Ubunturoot", UserRegistration.PASSWORD_AT_LEAST_ONE_UPPERCASE_CHARACTER);
         Assert.assertTrue(passwordAtLeastOneUpperCaseCharacter);
     }
     @Test
-    public void givenAtLeastOneUpperCaseCharacterPassword_WhenImproper_ShouldReturnFalse() {
+    public void givenPasswordHasAtLeastOneUpperCaseLetter_WhenImproper_ShouldReturnFalse() {
         boolean passwordAtLeastOneUpperCaseCharacter = UserRegistration.validatePassword("ubunturoot", UserRegistration.PASSWORD_AT_LEAST_ONE_UPPERCASE_CHARACTER);
         Assert.assertFalse(passwordAtLeastOneUpperCaseCharacter);
     }
     @Test
-    public void givenAtLeastNumberPassword_WhenProper_ShouldReturnTrue() {
+    public void givenPasswordHasAtLeastOneNumber_WhenProper_ShouldReturnTrue() {
         boolean passwordAtLeastOneNumber = UserRegistration.validatePassword("Ubunturoot123", UserRegistration.PASSWORD_AT_LEAST_ONE_Number);
         Assert.assertTrue(passwordAtLeastOneNumber);
     }
     @Test
-    public void givenAtLeastNumberPassword_WhenProper_ShouldReturnFalse() {
+    public void givenPasswordHasAtLeastOneNumber_WhenProper_ShouldReturnFalse() {
         boolean passwordAtLeastOneNumber = UserRegistration.validatePassword("ubunturoot", UserRegistration.PASSWORD_AT_LEAST_ONE_Number);
         Assert.assertFalse(passwordAtLeastOneNumber);
+    }
+    @Test
+    public void givenPasswordHasExactlyOneSymbol_WhenProper_ShouldReturnTrue() {
+        boolean passwordHasExactlyOneSymbol = UserRegistration.validatePassword("Ubuntu@root123", UserRegistration.PASSWORD_HAS_EXACTLY_ONE_SYMBOL);
+        Assert.assertTrue(passwordHasExactlyOneSymbol);
+    }
+    @Test
+    public void givenPasswordHasExactlyOneSymbol_WhenProper_ShouldReturnFalse() {
+        boolean passwordHasExactlyOneSymbol = UserRegistration.validatePassword("ubunturoot@123", UserRegistration.PASSWORD_HAS_EXACTLY_ONE_SYMBOL);
+        Assert.assertFalse(passwordHasExactlyOneSymbol);
     }
 
 }
