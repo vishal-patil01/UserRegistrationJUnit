@@ -53,12 +53,23 @@ public class UserRegistrationTest {
 
     @Test
     public void givenEightCharacterLongPassword_WhenProper_ShouldReturnTrue() {
-        boolean passwordAtLeastEightCharacterLong = UserRegistration.validateEightCharacterLongPassword("ubunturoot");
+        boolean passwordAtLeastEightCharacterLong = UserRegistration.validatePassword("ubunturoot",UserRegistration.PASSWORD_AT_LEAST_EIGHT_CHARACTER_LONG);
         Assert.assertTrue(passwordAtLeastEightCharacterLong);
     }
     @Test
     public void givenEightCharacterLongPassword_WhenImProper_ShouldReturnFalse() {
-        boolean passwordAtLeastEightCharacterLong = UserRegistration.validateEightCharacterLongPassword("nturoot");
+        boolean passwordAtLeastEightCharacterLong = UserRegistration.validatePassword("nturoot",UserRegistration.PASSWORD_AT_LEAST_EIGHT_CHARACTER_LONG);
         Assert.assertFalse(passwordAtLeastEightCharacterLong);
+    }
+
+    @Test
+    public void givenAtLeastOneUpperCaseCharacterPassword_WhenProper_ShouldReturnTrue() {
+        boolean passwordAtLeastOneUpperCaseCharacter = UserRegistration.validatePassword("Ubunturoot", UserRegistration.PASSWORD_AT_LEAST_ONE_UPPERCASE_CHARACTER);
+        Assert.assertTrue(passwordAtLeastOneUpperCaseCharacter);
+    }
+    @Test
+    public void givenAtLeastOneUpperCaseCharacterPassword_WhenImproper_ShouldReturnFalse() {
+        boolean passwordAtLeastOneUpperCaseCharacter = UserRegistration.validatePassword("ubunturoot", UserRegistration.PASSWORD_AT_LEAST_ONE_UPPERCASE_CHARACTER);
+        Assert.assertFalse(passwordAtLeastOneUpperCaseCharacter);
     }
 }
